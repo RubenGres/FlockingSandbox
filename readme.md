@@ -11,26 +11,26 @@ The sharks will get bigger as they eat the fishes.
 ### *Menu description* :
 
 ### Camera
-**follow :** click on the fish and the camera will keep it centered.
-**scroll :** move your mouse to an edge of the screen to move the camera in that direction.
-**reset :** reset camera and zoom.
+**follow :** click on the fish and the camera will keep it centered.  
+**scroll :** move your mouse to an edge of the screen to move the camera in that direction.  
+**reset :** reset camera and zoom.  
 
 ### Life
-**+fish :** click anywhere to spawn a fish.
-**+shark :** click anywhere to spawn a shark.
-**kill :** click on a boid to remove it from the simulation.
+**+fish :** click anywhere to spawn a fish.  
+**+shark :** click anywhere to spawn a shark.  
+**kill :** click on a boid to remove it from the simulation.  
 
 ### Debug
-**hitbox :** shows hitboxes for each boid.
-**restart :** restart the simulation.
-**killAll :** removes all boids from the simulation.
+**hitbox :** shows hitboxes for each boid.  
+**restart :** restart the simulation.  
+**killAll :** removes all boids from the simulation.  
 
 ### Time
-**pause :** pause the simulation
-**step :** advance the simulation by a fraction of a second.
-**settings :** open the setting menu. *not yet implemented*
+**pause :** pause the simulation  
+**step :** advance the simulation by a fraction of a second.  
+**settings :** open the setting menu. *not yet implemented*  
 
 ### Control
-**attract :** click and hold to attract the boids to your cursor. *not yet implemented*
-**scare :** click and hold to scare the boids away from your cursor. *not yet implemented*
-**move :** grab a boid and move it somewhere else.
+**attract :** click and hold to attract the boids to your cursor. *not yet implemented*  
+**scare :** click and hold to scare the boids away from your cursor. *not yet implemented*  
+**move :** grab a boid and move it somewhere else.  *not yet implemented*
