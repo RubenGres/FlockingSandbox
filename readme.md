@@ -1,3 +1,9 @@
+# Flocking sandbox
+
+<p align="center">
+  <img src="flocking.png">
+</p>
+
 This program is a simulation of fishes using [Boids](https://en.wikipedia.org/wiki/Boids) and [p5.js](https://p5js.org/).
 You can spawn a regular fish or a shark, the shark will try to eat the fish and the fish will try to escape.
 
