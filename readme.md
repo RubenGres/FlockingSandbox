@@ -12,6 +12,8 @@ Use right click to attract the boids and left click to scare them away. You can 
 A menu allows you to interact with the camera and the simulation, to open it, just click on the menu icon on the top-left corner.
 The sharks will get bigger as they eat the fishes.
 
+You can find it [here](https://rubengres.github.io/FlockingSandbox/index.html)
+
 ---
 
 ### *Menu description* :
