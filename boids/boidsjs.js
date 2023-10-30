@@ -1,6 +1,9 @@
 /* constants */
-const nbBoids = 100;
+const nbPrey = 100;
+const nbPred = 0;
 const globalScale = 0.5;
+
+const mouseRadius = 10;
 
 /* parameters */
 let width, height;
@@ -66,9 +69,11 @@ function setup() {
   document.addEventListener('contextmenu', event => event.preventDefault());
 
   /* main buttons */
+  /*
   btn_menu_show = createButton("&#9776");
   btn_menu_show.position(0, 0);
   btn_menu_show.mouseClicked(showMenu);
+  */
 
   btn_menu_hide = createButton("x");  
   btn_menu_hide.style('background-color', color(247, 87, 87));
@@ -159,10 +164,10 @@ function setupWorld() {
   clearBoids();
 
   /* spawn boids */
-  for (let i = 0; i < nbBoids; i++)
+  for (let i = 0; i < nbPrey; i++)
     new Prey(random(width), random(height));
   
-  for(let i = 0; i < 1; i++)
+  for(let i = 0; i < nbPred; i++)
     new Predator(random(width), random(height));
 }
 
@@ -220,7 +225,10 @@ function draw() {
   /* black rectangle to delimit world */
   rectX = -cameraPos.x * cameraScale;
   rectY = -cameraPos.y * cameraScale;
+  fill(0,0,0,20);
   rect(rectX, rectY, width*cameraScale, height*cameraScale);
+  clear();
+  
 
   if(mouseX < 195 && mouseY < 100) //cancel clicks in the menu
     mouseIsPressed = false;
@@ -367,10 +375,14 @@ function draw() {
 
   renderBoids();
 
+  let mousePos = getMousePosition()
+  fill(200,200,200,30);
+  stroke(0,0,0,30);
+  circle(mousePos.x,mousePos.y,20);
+
   /* add menu icons */
   if(isMenuVisible) {
     textSize(15);
-    fill(125);
     rect(0,0,195, 100);
     text("🎥", 0, 15);
     text("🧬", 0, 35);

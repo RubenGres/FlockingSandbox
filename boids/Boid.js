@@ -5,16 +5,16 @@ class Boid {
       this.velocity = p5.Vector.random2D();
 
       this.setMaxSpeed(1.5); 
-      this.setMaxSize(15);
+      this.setMaxSize(20);
       this.size = this.maxSize * random(0.5, 1);
       
       /* set color according to size */
       this.color = boidColor;
-      this.setColorAccordingToSize();
+      //this.setColorAccordingToSize();
   
       this.buddyRadius = 10*this.size;
       this.crowdRadius = this.buddyRadius;
-      this.desiredseparation = this.size/2;
+      this.desiredseparation = this.size;
 
       boids.push(this);
     }
@@ -35,24 +35,24 @@ class Boid {
     }
 
     applyForces(){
-      let sep = this.separate(); // Separation
-      let ali = this.align();    // Alignment
-      let coh = this.cohesion(); // Cohesion
+      let sep = this.separate(1); // Separation
+      let ali = this.align(1);    // Alignment
+      let coh = this.cohesion(0.1); // Cohesion
   
-      if(mouseIsPressed != 0){
-        let esc = createVector(0,0);
-        if(mouseButton === LEFT)
-          esc = this.escapeCursor();
-  
+      let esc = createVector(0,0);
+      if(mouseIsPressed != 0){  
         if(mouseButton === RIGHT)
           esc = this.followCursor();
-  
-        this.velocity.add(esc.mult(15)); // random amplification
+        else if(mouseButton === LEFT)
+          esc = this.escapeCursor(100000);  
+      } else {
+        esc = this.escapeCursor(20)
       }
   
       this.velocity.add(sep);
       this.velocity.add(ali);
       this.velocity.add(coh);
+      this.velocity.add(esc.mult(30)); // random amplification
     }
   
     flock() {
@@ -68,9 +68,13 @@ class Boid {
       this.position.y = (this.position.y + height) % height;
     }
     
-    escapeCursor(){
+    escapeCursor(range){
       let mouse = getMousePosition();
       let d = p5.Vector.dist(this.position, mouse);
+
+      if(d > range)
+        return createVector(0, 0);
+
       let diff = p5.Vector.sub(this.position, mouse);
       diff.normalize();
       diff.div(d);
@@ -88,7 +92,7 @@ class Boid {
       return diff;
     }
     
-    separate() {
+    separate(factor) {
       let sum = createVector(0, 0);
       
       for (let i = 0; i < this.buddies.length; i++) {
@@ -106,10 +110,10 @@ class Boid {
         }
       }
       
-      return sum;
+      return sum.mult(factor);
     }
     
-    align() {
+    align(factor) {
       let sum = createVector(0, 0);
       for (let i = 0; i < this.buddies.length; i++) {
         let bud = this.buddies[i];
@@ -122,10 +126,10 @@ class Boid {
         }
       }
       
-      return sum;
+      return sum.mult(factor);
     }
     
-    cohesion() {
+    cohesion(factor) {
       let sum = createVector(0, 0);
       let count = 0;
       for (let i = 0; i < this.buddies.length; i++) {
@@ -141,7 +145,7 @@ class Boid {
         sum.div(count);
         
         sum.sub(this.position);
-        return sum.setMag(0.05);
+        return sum.setMag(factor);
       } else {
         return createVector(0, 0);
       }
@@ -160,7 +164,7 @@ class Boid {
     }
     
     render() {
-      noStroke();
+      stroke(230,230,230);
       
       let len = (this.size / 1.5) * cameraScale;
       let x1 = 1.5*len, y1 = 0;
@@ -176,7 +180,7 @@ class Boid {
       triangle(x1, y1, x2, y2, x3, y3);
       pop();
 
-      if(showHitbox)
+      if(true)
         this.showHitbox();
     }
 

@@ -1,6 +1,6 @@
 class Prey extends Boid {
     constructor(x,y) {
-        super(x,y, color(0, 255, 255, 255));
+        super(x,y, color(250, 250, 250, 255));
         this.escapeRadius = this.size * 5;
         preys.push(this);
     }
@@ -49,7 +49,7 @@ class Prey extends Boid {
         let y = this.position.y - cameraPos.y;
         translate(x * cameraScale, y * cameraScale);
         noFill();
-        stroke(this.color);
+        stroke(color(255,255,255,15));
         circle(0,0,this.escapeRadius * cameraScale);        
         pop();
     }

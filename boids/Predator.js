@@ -2,7 +2,7 @@ class Predator extends Boid {
     constructor(x,y) {
         super(x,y, color(255, 0, 0));
 
-        this.setSize(25);
+        this.setSize(30);
         this.setMaxSpeed(1.55);
         this.setColorAccordingToSize();
         
