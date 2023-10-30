@@ -42,12 +42,13 @@ let cameraScale = 1;
 let canvas;
 let isRunning;
 
-/* zoom in and out */
+/* zoom in and out 
 function mouseWheel(event) {
   cameraScale = max(0, cameraScale - event.delta * 0.05);
   cameraPos.x = mouseX - (mouseX / cameraScale);
   cameraPos.y = mouseY - (mouseY / cameraScale);
 }
+*/
 
 /* get mouse position on map */
 function getMousePosition() {
@@ -75,9 +76,6 @@ function setup() {
   btn_menu_hide.hide();
   btn_menu_hide.mouseClicked(hideMenu);
   menuItems.push(btn_menu_hide);
-
-  /* add menu icons */
-  //TODO
 
   /* add menu buttons */
   newMenuButton.y = 0;
@@ -217,11 +215,9 @@ function renderBoids() {
 
 /* draw on screen */
 function draw() {
-  background(255);
   document.body.style.cursor = "default";
 
   /* black rectangle to delimit world */
-  fill(0);
   rectX = -cameraPos.x * cameraScale;
   rectY = -cameraPos.y * cameraScale;
   rect(rectX, rectY, width*cameraScale, height*cameraScale);

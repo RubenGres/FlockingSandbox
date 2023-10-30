@@ -12,9 +12,9 @@ class Boid {
       this.color = boidColor;
       this.setColorAccordingToSize();
   
-      this.buddyRadius = 3*this.size;
+      this.buddyRadius = 10*this.size;
       this.crowdRadius = this.buddyRadius;
-      this.desiredseparation = this.size;
+      this.desiredseparation = this.size/2;
 
       boids.push(this);
     }
