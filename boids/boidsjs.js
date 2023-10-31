@@ -220,7 +220,7 @@ function draw() {
   /* black rectangle to delimit world */
   rectX = -cameraPos.x * cameraScale;
   rectY = -cameraPos.y * cameraScale;
-  rect(rectX, rectY, width*cameraScale, height*cameraScale);
+  clear();
 
   if(mouseX < 195 && mouseY < 100) //cancel clicks in the menu
     mouseIsPressed = false;

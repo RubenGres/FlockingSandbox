@@ -1,6 +1,6 @@
 class Prey extends Boid {
     constructor(x,y) {
-        super(x,y, color(0, 255, 255, 255));
+        super(x,y, color(255, 255, 255, 255));
         this.escapeRadius = this.size * 5;
         preys.push(this);
     }

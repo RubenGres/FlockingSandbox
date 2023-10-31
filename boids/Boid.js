@@ -4,13 +4,12 @@ class Boid {
       this.position = createVector(x, y);
       this.velocity = p5.Vector.random2D();
 
-      this.setMaxSpeed(1.5); 
-      this.setMaxSize(15);
+      this.setMaxSpeed(3); 
+      this.setMaxSize(30);
       this.size = this.maxSize * random(0.5, 1);
       
       /* set color according to size */
       this.color = boidColor;
-      this.setColorAccordingToSize();
   
       this.buddyRadius = 10*this.size;
       this.crowdRadius = this.buddyRadius;
@@ -172,6 +171,7 @@ class Boid {
       let y = this.position.y - cameraPos.y;
       translate(x * cameraScale, y * cameraScale);
       fill(this.color);
+      stroke(color(110,110,110));
       rotate(this.velocity.heading());
       triangle(x1, y1, x2, y2, x3, y3);
       pop();
